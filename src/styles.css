@@ -1,0 +1,326 @@
+/* Luxurious Theme Variables */
+:root {
+  --primary-color: #1a1a2e;
+  --secondary-color: #16213e;
+  --accent-color: #f4a261;
+  --gold-color: #ffd700;
+  --text-color: #e0e0e0;
+  --white: #ffffff;
+  --glass-bg: rgba(255, 255, 255, 0.15);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  --background-gradient: linear-gradient(135deg, #0f0f1c, #1a1a2e);
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: var(--background-gradient);
+  color: var(--text-color);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* General Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 10%;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--card-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.logo h1 {
+  font-size: 26px;
+  color: var(--gold-color);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+nav ul li a {
+  padding: 8px 15px;
+  color: var(--white);
+  transition: color 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+  color: var(--accent-color);
+  border-bottom: 2px solid var(--accent-color);
+}
+
+/* CTA Button */
+.cta-button {
+  background: var(--gold-color);
+  color: var(--secondary-color);
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+
+.cta-button:hover {
+  background: var(--white);
+  color: var(--secondary-color);
+  transform: scale(1.1);
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8% 10%;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.hero-content {
+  max-width: 50%;
+}
+
+.hero-content h2 {
+  font-size: 48px;
+  color: var(--gold-color);
+  margin-bottom: 20px;
+  animation: slideInLeft 1.5s ease-in-out;
+}
+
+.hero-content p {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: var(--white);
+  animation: fadeIn 2s ease-in-out;
+}
+
+.hero-image img {
+  max-width: 90%;
+  border-radius: 20px;
+  animation: float 4s infinite ease-in-out;
+}
+
+/* Services Section */
+.services {
+  text-align: center;
+  padding: 5% 10%;
+  animation: fadeInScale 1.5s ease-in-out;
+}
+
+.service-cards {
+  display: flex;
+  justify-content: space-around;
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.card {
+  background: var(--glass-bg);
+  border: 2px solid var(--glass-border);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.card h3 {
+  color: var(--gold-color);
+  font-size: 22px;
+}
+
+.card p {
+  color: var(--white);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
+}
+
+/* Pricing Section */
+.pricing {
+  text-align: center;
+  padding: 5% 10%;
+}
+
+.pricing-cards {
+  display: flex;
+  justify-content: space-around;
+  gap: 25px;
+}
+
+.pricing .card {
+  border: 2px solid var(--glass-border);
+}
+
+.pricing .card .price {
+  font-size: 36px;
+  font-weight: bold;
+  color: var(--gold-color);
+}
+
+/* Testimonials Section */
+.testimonials {
+  text-align: center;
+  padding: 5% 10%;
+}
+
+.testimonial-cards {
+  display: flex;
+  justify-content: space-around;
+  gap: 25px;
+}
+
+.testimonials .card {
+  border: 2px solid var(--glass-border);
+}
+
+.testimonials .card h4 {
+  color: var(--gold-color);
+}
+/* FAQ Section */
+.faq {
+  text-align: center;
+  padding: 5% 10%;
+}
+
+.faq-item {
+  background: var(--glass-bg);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.faq-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.faq-item h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--gold-color);
+}
+
+/* Newsletter */
+.newsletter {
+  text-align: center;
+  padding: 5% 10%;
+}
+
+.newsletter form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.newsletter input {
+  padding: 10px;
+  border-radius: 5px;
+  width: 300px;
+}
+
+.newsletter button {
+  background: var(--gold-color);
+}
+
+.newsletter button:hover {
+  background: var(--white);
+  color: var(--secondary-color);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: var(--glass-bg);
+}
+
+/* Social Links - Align in a Row */
+.social-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Adjust spacing between icons */
+  margin-top: 10px;
+  padding: 0;
+}
+
+.social-links li {
+  display: inline-block;
+}
+
+.social-links li a {
+  color: var(--white);
+  font-size: 24px; /* Adjust icon size */
+  transition: color 0.3s, transform 0.3s;
+}
+
+.social-links li a:hover {
+  color: var(--accent-color);
+  transform: scale(1.2); /* Slight zoom on hover */
+}
+
+/* Live Chat */
+.chat-button {
+  background: var(--gold-color);
+}
+
+.chat-button:hover {
+  background: var(--white);
+  color: var(--secondary-color);
+}
