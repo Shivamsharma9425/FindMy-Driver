@@ -1,100 +1,67 @@
-import React from "react";
-import "./styles.css";
+// src/App.js
+
+import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase";
+
+// Pages & Components
+import Login from "./components/Login";
+import Signup from "./components/Signup"; // (create this if needed)
+import Dashboard from "./pages/Dashboard";
+import DriverSignup from './pages/DriverSignup';
+import Landing from "./pages/Landing";
+import DriverList from "./pages/DriverList";
+import DriverDashboard from "./pages/DriverDashboard";
+import City from "./pages/City";
+import RequestHistory from "./pages/RequestHistory";
+import Couriers from "./pages/Couriers";
+import Outstation from "./pages/Outstation";
+import Freight from "./pages/Freight";
+import Notifications from "./pages/Notifications";
+import Safety from "./pages/Safety";
+import Settings from "./pages/Settings";
+import Help from "./pages/Help";
 
 function App() {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
+    });
+    return () => unsub();
+  }, []);
+
+  if (loading) return <h2>Loading...</h2>;
+
   return (
-    <div className="App">
-      {/* Header Section */}
-      <header className="header">
-        <div className="logo">
-          <h1>FindMy Driver</h1>
-        </div>
-        <nav>
-          <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#testimonials">Testimonials</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
-        <button className="cta-button">Book Now</button>
-      </header>
-
-      {/* Hero Section */}
-      <section className="hero" id="home">
-        <div className="hero-content">
-          <h2>Your Private Driver, Just a Click Away!</h2>
-          <p>Rent a professional driver for your car and enjoy a stress-free ride.</p>
-          <button className="cta-button">Get Started</button>
-        </div>
-        <div className="hero-image">
-          <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Driver Illustration" />
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section className="services" id="services">
-        <h2>Our Services</h2>
-        <div className="service-cards">
-          <div className="card">
-            <h3>Hourly Rentals</h3>
-            <p>Book a driver by the hour for your errands or events.</p>
-          </div>
-          <div className="card">
-            <h3>Daily Rentals</h3>
-            <p>Need a driver for the whole day? We've got you covered.</p>
-          </div>
-          <div className="card">
-            <h3>Corporate Services</h3>
-            <p>Professional drivers for your business needs.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="faq" id="faq">
-        <h2>Frequently Asked Questions</h2>
-        <div className="faq-list">
-          <div className="faq-item">
-            <h3>How do I book a driver?</h3>
-            <p>You can book a driver through our website or mobile app. Simply select your preferred time and location.</p>
-          </div>
-          <div className="faq-item">
-            <h3>What areas do you serve?</h3>
-            <p>We currently serve all major cities. Check our service map for more details.</p>
-          </div>
-          <div className="faq-item">
-            <h3>Can I cancel my booking?</h3>
-            <p>Yes, you can cancel your booking up to 24 hours before the scheduled time.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Newsletter Section */}
-      <section className="newsletter">
-        <h2>Subscribe to Our Newsletter</h2>
-        <p>Get the latest updates and special offers.</p>
-        <form>
-          <input type="email" placeholder="Enter your email" required />
-          <button type="submit" className="cta-button">Subscribe</button>
-        </form>
-      </section>
-
-      {/* Footer Section */}
-      <footer id="contact">
-        <div className="footer-content">
-          <h3>FindMy Driver</h3>
-          <p>Your trusted partner for private driver rentals.</p>
-          <ul className="social-links">
-            <li><a href="#"><i className="fab fa-facebook"></i></a></li>
-            <li><a href="#"><i className="fab fa-twitter"></i></a></li>
-            <li><a href="#"><i className="fab fa-instagram"></i></a></li>
-          </ul>
-        </div>
-      </footer>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/login" element={<Login /> } />
+        <Route path="/driver-signup" element={<DriverSignup />} />
+        <Route path="/signup" element={!user ? <Signup /> : <Signup />} />
+        <Route path="/driver-dashboard" element={<DriverDashboard />} />
+        <Route path="/driver-list" element={<DriverList />} />
+        <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/login" />} />
+        <Route path="*" element={<h2>404 - Page Not Found</h2>} />
+        
+        <Route path="/city" element={<City />} />
+        <Route path="/request-history" element={<RequestHistory />} />
+        <Route path="/couriers" element={<Couriers />} />
+        <Route path="/outstation" element={<Outstation />} />
+        <Route path="/freight" element={<Freight />} />
+        <Route path="/notifications" element={<Notifications />} />
+        <Route path="/safety" element={<Safety />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/help" element={<Help />} />
+        <Route path="/driver-dashboard" element={<DriverDashboard />} />
+        <Route path="/driver-signup" element={<DriverSignup />} />
+      </Routes>
+    </Router>
   );
 }
 
