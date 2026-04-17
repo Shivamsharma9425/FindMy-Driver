@@ -1,10 +1,10 @@
-# 🚗 DriveLink – Find My Driver App
+# 🚗 Find My Driver
 
 > A full-stack web application that allows users to book personal drivers for their vehicles in real-time based on city, route, and fare. Built with Firebase, Firestore, HTML/CSS, and JavaScript.
 
 ## 📌 About the Project
 
-DriveLink is a smart driver-booking platform designed for users who own vehicles but need a driver on demand. It allows seamless ride listings, driver registrations, and real-time booking management. Inspired by ride-sharing apps, but uniquely focused on *driver-for-hire* for personal vehicles.
+Find MY Driver is a smart driver-booking platform designed for users who own vehicles but need a driver on demand. It allows seamless ride listings, driver registrations, and real-time booking management. Inspired by ride-sharing apps, but uniquely focused on *driver-for-hire* for personal vehicles.
 
 ### 🎯 Key Features
 
